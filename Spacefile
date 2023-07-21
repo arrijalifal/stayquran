@@ -1,0 +1,7 @@
+v: 0
+micros:
+  - name: nextjs-app
+    src: .
+    engine: next
+    primary: true
+    dev: npm run dev

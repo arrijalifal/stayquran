@@ -3,9 +3,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (prefers-reduced-motion: no-preference) {
+  * {
+      scroll-behavior: smooth;
+  }
+}
+
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #11181E;
+  /* background-color: #11181E; */
+  background-color: #fafafa;
+  color: black;
 }
 
 button {
@@ -15,4 +23,48 @@ button {
 button:hover {
   box-shadow: 0 0 10px yellow;
   transition: all ease-out .2s
+}
+
+footer {
+  background-color: #11181E;
+  color: #E4E4E4;
+  text-align: center;
+}
+
+.heading1 {
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 125%;
+}
+
+.heading2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 100%;
+}
+
+.buttontext {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 100%;
+}
+
+.yellowbutton {
+  background-color: #ECE224;
+  border-radius: 12px;
+}
+
+.outlinebutton {
+  border: 2px solid #ECE224;
+  border-radius: 12px;
+}
+
+.regulartext {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 125%
+}
+
+body::-webkit-scrollbar {
+  display:none;
 }

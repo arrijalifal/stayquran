@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import font from '@/utils/fonts';
 import style from '@/styles/Home.module.css';
 import DefaultNavBar from '@/components/DefaultNavBar';
 import icons from '@/utils/iconskeunggulan';
 import React from 'react';
+import Link from 'next/link';
 
 export default function Home() {
   const content = [
@@ -25,38 +25,67 @@ export default function Home() {
   ]
   return (
     <div>
-      <section className="h-screen relative">
-        <Image src={'/images/quran.jpg'} fill='responsive' style={{ objectPosition: '20% 30%', objectFit: 'cover' }} className={style.image}></Image>
-        <div className={`${style.gradient} h-screen w-full absolute`}>
-          <DefaultNavBar />
-          <div className='p-[5rem] w-4/5'>
-            <h1 className={`${font.medium} text-[4rem] leading-[110%] text-white w-4/5`}>Membaca Al-Qur&apos;an itu Mudah</h1>
-            <p className='text-white mt-7 leading-[119%]'>Belajar tahsin Al-Qur&apos;an yang fleksibel dan amanah</p>
-            <div className='mt-7'>
-              <button className='bg-yellow-300 px-16 py-2 rounded-2xl'>Daftar</button>
-              <button className='border-2 px-16 py-1.5 ml-8 border-yellow-300 rounded-2xl text-white'>Selengkapnya</button>
+      <section className={`h-screen w-full flex flex-col`}>
+        <DefaultNavBar />
+        <div className='flex-1 p-20'>
+          <div className='relative w-full h-full'>
+            <Image src={'/images/quran.jpg'} fill='responsive' style={{ objectPosition: '20% 30%', objectFit: 'cover' }} className={`${style.image} z-0 rounded-xl`}></Image>
+            <div className='absolute h-full text-[#fafafa] flex flex-col pl-16 justify-center'>
+              <h1 className='heading1'>Membaca Al-Qur&apos;an</h1>
+              <h1 className='heading1'>itu Mudah</h1>
+              <p className='leading-[125%]'>by Stay Quran</p>
+              <div className='mt-4'>
+                <button className='yellowbutton outlinebutton w-[14rem] py-2 buttontext text-[#2f2f2f]'>Daftar</button>
+                <Link href={'#keunggulan'} scroll={false}><button className='outlinebutton w-[14rem] py-2 buttontext mt-4 ml-4'>Selengkapnya</button></Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      <section className='h-screen'>
-        <h1 className={`text-white text-[2.5rem] w-full text-center mt-10`}>Keunggulan</h1>
-        <div className='flex justify-between gap-11 px-36 mt-16'>
+      <section id='keunggulan' className='h-screen pt-3'>
+        <h1 className={`heading1 text-center`}>Keunggulan</h1>
+        <div className='grid gap-5 grid-cols-2 text-center px-[4.5rem] pt-16'>
           {
-            content.map((e, idx) => {
+            Array.from({ length: 6 }).map(_ => {
               return (
-                <React.Fragment key={idx}>
-                  <div className='border-2 border-yellow-300 rounded-2xl py-12'>
-                    <Image src={e.icon} className='mx-auto' />
-                    <h2 className='w-full text-center text-white mt-8 text-4xl'>{e.title}</h2>
-                    <p className='text-white mt-8 px-8'>{e.description}</p>
+                <div className='flex px-8 py-6 shadow-lg shadow-grey-400 rounded-xl'>
+                  <div className='w-20 h-20 rounded-full  border-2'></div>
+                  <div className='flex-1 ml-6 text-left'>
+                    <h1 className='heading2'>Lorem Ipsum</h1>
+                    <p className='mt-4 regulartext'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
                   </div>
-                </React.Fragment>
+                </div>
               )
             })
           }
         </div>
       </section>
+      <section id="testimoni" className='h-screen pt-8'>
+        <h1 className='heading1 text-center pb-8'>Testimoni</h1>
+        <div className='grid grid-cols-3 gap-5 px-36'>
+          {
+            Array.from({ length: 3 }).map(_ => {
+              return (
+                <div className='shadow-xl shadow-grey-400 py-8'>
+                  <div className='w-40 h-40 rounded-full border mx-auto'></div>
+                  <h2 className='heading2 text-center my-4'>Lorem Ipsum</h2>
+                  <p className='px-8 text-justify'>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam similique amet aut velit ullam, libero, animi sit cum temporibus dolores sed tenetur aliquid saepe blanditiis sequi minus quidem maxime ducimus!
+                  </p>
+                </div>
+              )
+            })
+          }
+        </div>
+      </section>
+      <section id='kontak' className='h-screen flex flex-col justify-center items-center'>
+        <h1 className='heading1'>Masih ragu?</h1>
+        <p>Kami siap menghapus keraguan anda!</p>
+        <div></div>
+      </section>
+      <footer>
+        ©️ 2023 Stay Quran
+      </footer>
     </div>
   )
 }
