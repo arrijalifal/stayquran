@@ -1,103 +1,83 @@
-import Image from "next/image";
+import Image from 'next/image';
+import style from '@/styles/Home.module.css';
+import DefaultNavBar from '@/components/DefaultNavBar';
+import React from 'react';
+import Link from 'next/link';
+import keunggulan from '@/utils/benefits';
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div>
+      <section className={`h-screen w-full flex flex-col`}>
+        <DefaultNavBar />
+        <div className='flex-1 p-20'>
+          <div className='relative w-full h-full'>
+            <Image src={'/images/quran.jpg'} alt='background_quran' fill={true} style={{ objectPosition: '20% 30%', objectFit: 'cover' }} className={`${style.image} z-0 rounded-xl`}></Image>
+            <div className='absolute h-full text-[#fafafa] flex flex-col pl-16 justify-center'>
+              <h1 className='heading1'>Membaca Al-Qur&apos;an</h1>
+              <h1 className='heading1'>itu Mudah</h1>
+              <p className='leading-[125%]'>by Stay Quran</p>
+              <div className='mt-4'>
+                <button className='yellowbutton outlinebutton w-[14rem] py-2 buttontext text-[#2f2f2f]'>Daftar</button>
+                <Link href={'#keunggulan'} scroll={false}><button className='outlinebutton w-[14rem] py-2 buttontext mt-4 ml-4'>Selengkapnya</button></Link>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+      <section id='keunggulan' className=' pt-3'>
+        <h1 className={`heading1 text-center`}>Keunggulan</h1>
+        <div className='grid gap-5 grid-cols-2 text-center px-[4.5rem] pt-16'>
+          {
+            keunggulan.map((k, idx) => {
+              return (
+                <React.Fragment key={idx}>
+                  <div className='flex px-8 py-6 shadow-lg shadow-grey-400 rounded-xl bg-[#F5F5F5]'>
+                    <div className='w-20 h-20 rounded-full  border-2'></div>
+                    <div className='flex-1 ml-6 text-left'>
+                      <h1 className='heading2'>{k.title}</h1>
+                      <p className='mt-4 regulartext'>{k.description}</p>
+                    </div>
+                  </div>
+                </React.Fragment>
+              )
+            })
+          }
+        </div>
+      </section>
+      <section id="testimoni" className=' pt-8'>
+        <h1 className='heading1 text-center pb-8'>Testimoni</h1>
+        <div className='grid grid-cols-3 gap-5 px-36'>
+          {
+            Array.from({ length: 3 }).map((_, idx) => {
+              return (
+                <React.Fragment key={idx}>
+                  <div className='shadow-xl shadow-grey-400 py-8 rounded-xl bg-[#F5F5F5]'>
+                    <div className='w-40 h-40 mx-auto relative'>
+                      <Image src={'/images/download.jpeg'} alt='penguin' fill={true} className='rounded-full'></Image>
+                    </div>
+                    <div className='my-4 text-center'>
+                      <h1 className='heading2'>Penguin Master</h1>
+                      <h2 className='italic mt-0.5'>Hewan, 2023</h2>
+                    </div>
+                    <p className='px-8 text-justify'>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam similique amet aut velit ullam, libero, animi sit cum temporibus dolores sed tenetur aliquid saepe blanditiis sequi minus quidem maxime ducimus!
+                    </p>
+                  </div>
+                </React.Fragment>
+              )
+            })
+          }
+        </div>
+      </section>
+      <section id='kontak' className='h-screen flex flex-col justify-center items-center'>
+        <h1 className='heading1'>Masih ragu?</h1>
+        <p>Kami siap menghapus keraguan anda!</p>
+        <div></div>
+      </section>
+      <footer>
+        ©️ 2023 Stay Quran
       </footer>
     </div>
-  );
+  )
 }

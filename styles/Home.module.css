@@ -1,0 +1,16 @@
+.gradient {
+    background: linear-gradient(180deg, rgba(84, 84, 84, 0.00) 0%, #11181E 98.44%);
+}
+
+.image {
+    filter: brightness(30%);
+}
+
+.button {
+    box-shadow: 0 0 0px yellow;
+}
+
+.button:hover {
+    box-shadow: 0 0 10px yellow;
+    transition: all ease-out .2s
+}
